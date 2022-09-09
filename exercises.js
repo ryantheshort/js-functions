@@ -5,9 +5,9 @@
     // Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-then-else construct available in Javascript.
     // ---------------------
     function max(num1, num2){
-       if(num1>num2){
-           return num1}
-           else{return num2};
+       if(num1>num2){		// if num1 is greater than num2
+           return num1}		// (if it's true)then return num1. 'Return' kicks you out of the function.
+           else{return num2}; // if false, then return num2.
        }
     
   
@@ -15,12 +15,22 @@
     // ---------------------
     // Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.
     // ---------------------
-    // var max=0;
+    // var max=0;  
     function maxOfThree(num1,num2,num3){
         const max = Math.max(num1,num2,num3);
         return max;
     }
 
+	// Could also do: (using the "if...else construct") https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else#description
+	// function maxOfThree(num1,num2,num3) {
+	// if (num1 > num2 && num1 > num3) {
+	// 	return num1;
+	// } else if (num2 > num3) {
+	// 	return num2;
+	// } else {
+	// 	return num3;
+	// }
+	// }
     
   
     // ---------------------
@@ -41,40 +51,46 @@
         }
         return false;
     }
-    //(string != vowels[i])
+    //(string != vowels[i]) Meaning: string is NOT EQUAL to vowels[i]
+
+	// Could also do:
+	// 	function isVowel(str) {
+	//		str = str.toLowerCase();		====best practice is to specify lowercase or caps
+	//		return 'aeiou'.includes(str);
+	//	}
   
   
     // ---------------------
     // Write a function rovarspraket() that will translate a text into "rövarspråket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".
     // ---------------------  ASSUMING EVERYTHING IS LOWERCASE!
-    function rovarspraket(str) {
-		//split input string into array of individual characters
-        var arr = str.split('');
-		//define output variable
-		var out ='';
-		//loop through string array to check if vowel or space
-		for (var i = 0; i < arr.length; i++){ // do all the below logic, then increase your integer by 1. rinse and repeat.
-			if (!(arr[i] == ' ' || arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u')){
-				//if the array[i] is not space(' ') OR = to a VOWEL ^^
-				out += arr[i] + 'o' + arr[i];  // whatever my string is, start from that and add to it (+=)
+    
+		
+		//returns string
+		
+	
+    
+	// Could also do: ^^^ ===RECOMMENDED===
+			function rovarspraket(text) {
+				let translatedText = '';
+	
+				for(let i = 0; i < text.length; i++) {   //I want to start from "greater than" 0, and go from there//
+					if('bcdfghjklmnpqrstvwxz'.includes(text[i])) {
+						translatedText += text[i] + 'o' + text[i]
+					} else {
+						translatedText += text[i];
+					}
+				}
+				return translatedText;
 			}
-			else {
-				//if vowel or space just insert character
-				out += arr[i];
-			}
-		}
-		//return string
-		return out;
-	}
-        
 
     
-  
+  // let and const are BLOCK SCOPED.
+  // var is FUNCTON SCOPED.
   
     // ---------------------
     // Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in an array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.
     // ---------------------
-  //define sum()
+  //define sum() Replaing original 'var' with const/let
 	function sum(arrNums) {
 		//define output variable
 		var outSum = 0;
@@ -99,6 +115,7 @@
 		
 	}
   
+	
   
     // ---------------------
     // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
@@ -106,15 +123,36 @@
   //define reverse string function
 	function reverse(str) {
 		//define output string
-		var outStr = '';
+		const outStr = '';
 		//loop through string backwards
-		for (var i = str.length - 1; i >= 0; i--) {
+		for (let i = str.length - 1; i >= 0; i--) {
 			//add to output string in backwards order
 			outStr += str[i];
 		}
 		//return reversed string
 		return outStr;
 	}
+
+	// one liner
+	function reverse(str) {
+		return str.split('').reverse().join('');
+	}
+
+	//==Could also do:
+
+	// function reverse(str) {
+	// 	var length = str.length;
+	// 	var reversed = [];
+	// 	var joined = ("");
+	// 	for (let i = length; i > 0; i--){
+	// 		reversed.push(str.charAt(i-1));
+	// 	};
+	//===== ['y', 'p', 'p', 'a', 'h']				COMMENTS WITHIN COMMENTS
+	//===== for(let i = 0; i< (length) ; i++){				''
+	//===== 	joined += (reversed[i]);					''
+	//===== }												''
+	//	return reversed.join('');
+	// }
   
   
     // ---------------------
@@ -123,9 +161,9 @@
   // define function to find the longest word and then return the length of that word
 	function findLongestWord(arrStr){
 		//define output length
-		var longestLength = 0;
-		//loop through input array and compare lengths of words
-		for(var i = 0; i < arrStr.length; i++){
+		let longestLength = '';
+		//loop through input array and compare lengths of words. ('i++' = 'i + 1')
+		for(let i = 0; i < arrStr.length; i++){
 			//compare lengths
 			if(arrStr[i].length > longestLength) {
 				//store longest length
@@ -143,19 +181,30 @@
   //define function
 	function filterLongWords(arrWords, i){
 		//define output array
-		var longestWords = [];
+		const longWords = [];
 		//loop through word Array
-		for(var j = 0; j < arrWords.length; j++){
-			//compare if word in array is longer than i
+		for(let j = 0; j < arrWords.length; j++){
+			//compare if word in array is longer than i. if this word is greater in length than i
 			if(arrWords[j].length > i) {
 				//store in output Array
-				longestWords[longestWords.length] = arrWords[j];
+				longWords[longWords.length] = arrWords[j];
 			}
 		}
 		//return output Array
 		return longestWords;
 	}
-  
+
+	// =====CAN ALSO DO===== PREFER THIS ONE====
+	function filterLongWords(arr, i) {
+		const result = [];		//going to be changing the array(arr)//
+		for(let j = 0; j < arr.length; j++) {
+			if(arr[j].length > i){
+				result.push(arr[j])  //push this result into my array
+			}
+		}
+	
+		return result;
+	}
   
     // ---------------------
     // Define a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
@@ -163,9 +212,9 @@
   //define function to count how many times each letter is used
 	function charFreq(str){
 		//define frequency object
-		var freq = {};
+		const freq = {};
 		//loop through the string backwards to build frequency listing
-		for (var i = str.length - 1; i >= 0; i--) {
+		for (let i = str.length - 1; i >= 0; i--) {
 			//for str[i] position in freq array have it add 1 to itself or zero for specific letter "i"
 			freq[str[i]] = 1 + (freq[str[i]] || 0);
 		}
