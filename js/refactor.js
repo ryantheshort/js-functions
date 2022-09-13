@@ -32,7 +32,10 @@
   }
   
   // Put your answer below -------------------------
-  
+  var doSomethingCool = function () {
+    console.log("Something Cool, but anonymous!");
+  };
+  doSomethingCool();
   
   // -----------------------------------------------
   
@@ -52,7 +55,10 @@
   setTimeout(sayHi, 2000);
   
   // Put your answer below -------------------------
-  
+  setTimeout(function () {
+    // console.log("hello world test");
+    alert("Hello, World!");
+  }, 2000);
   
   // -----------------------------------------------
   
@@ -82,7 +88,9 @@
   console.log("The letter is", letter);
   
   // Put your answer below -------------------------
-  
+  // Answer: [C] z then y.
+  //  - Y has a setTimeout of 1s. x is not logged at all.
+  //There fore, the function will default to Z first.
   
   // -----------------------------------------------
   
@@ -104,8 +112,9 @@
   };
   
   // Put your answer below -------------------------
-  
-  
+   reverseStr = function(str) {
+    return str.split('').reverse().join('');
+  }
   
   // -----------------------------------------------
   
@@ -140,7 +149,17 @@
   
   // Put your answer below -------------------------
   
+  spanishColor = function(colorName){
+    return colors[colorName];
+  }
   
+  const colors = {
+    rojo: "#ff0000",
+    blanco: "#ffffff",
+    azul: "#0000ff",
+    verde: "#00ff00",
+    negro: "#000000"
+  }
   
   // -----------------------------------------------
   
@@ -157,7 +176,8 @@
   var foo = "bar";
   
   // Put your answer below -------------------------
-  
+  var foo;
+  foo = "bar";
   
   // -----------------------------------------------
   
@@ -182,7 +202,10 @@
   
   // Put your answer below -------------------------
   
-  
+  function callNtimes(callback, int) {
+    var range = Array.from(Array(int).keys());
+    range.forEach(callback);
+  }
   // -----------------------------------------------
   
   //////////////////////////////////////////////////
@@ -242,7 +265,11 @@
   var twoPlusTwo = addNumbers(2,2);
   
   // Put your answer below -------------------------
-  return (numberA + numberB);
+  var addNumbers = function (numberA, numberB) {
+    return(numberA + numberB);
+  };
+
+  var twoPlusTwo = addNumbers(2, 2);
   
   // return value was missing.
   // -----------------------------------------------
@@ -271,15 +298,14 @@
   // Put your answer below -------------------------
   // amount is undefined. Speed + undefined = NaN.
     //  speed += amount || 1
-
-  if(amount===undefined){
-    speed += 1;
-  }else {
-    speed += amount
-  }
-  
-  
-  
+    var speed = 0
+    var accelerate = function(amount)  {
+    if (amount === undefined) {
+      then (speed += 1);
+    } else {
+      speed += amount;
+    }
+    }
   // -----------------------------------------------
   
   //////////////////////////////////////////////////
